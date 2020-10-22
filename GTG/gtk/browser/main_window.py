@@ -1167,7 +1167,7 @@ class MainWindow(Gtk.ApplicationWindow):
         self.update_recurring(True, 'year')
 
     def on_toggle_recurring(self, action, param):
-        self.update_toggle_recurring() 
+        self.update_toggle_recurring()
 
     def on_date_changed(self, calendar):
         # Get tasks' list from task names' list
@@ -1341,8 +1341,11 @@ class MainWindow(Gtk.ApplicationWindow):
         if not nospecial and (not taglist or len(taglist) < 0):
             taglist = ['gtg-tags-all']
         if nospecial:
+            special = ['gtg-tags-all', 'gtg-tags-none',
+                       'search', 'gtg-tags-sep']
+
             for t in list(taglist):
-                if not t.startswith('@'):
+                if t in special:
                     taglist.remove(t)
         return taglist
 
